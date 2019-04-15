@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <sys/ioctl.h>          /* necessary for: ioctl . lazyio */
 
 #include "ior.h"
 #include "iordef.h"
