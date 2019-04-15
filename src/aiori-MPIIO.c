@@ -250,6 +250,10 @@ static void *MPIIO_Open(char *testFileName, IOR_param_t * param)
         }
         if (mpiHints != MPI_INFO_NULL)
                 MPI_CHECK(MPI_Info_free(&mpiHints), "MPI_Info_free failed");
+
+        #define CEPH_IOCTL_MAGIC 0x97
+        #define CEPH_IOC_LAZYIO _IO(CEPH_IOCTL_MAGIC, 4)
+        ioctl(*fd, CEPH_IOC_LAZYIO, 0);
         return ((void *)fd);
 }
 
